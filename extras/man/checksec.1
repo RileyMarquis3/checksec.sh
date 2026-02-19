@@ -48,12 +48,20 @@ Disable table headers.
 Check security properties for a single binary file.
 .It Cm dir Ar directory
 Check security properties for binary files in a directory.
+Use
+.Fl r
+or
+.Fl -recursive
+to recurse into subdirectories.
 .It Cm fortifyFile Ar path
 Check FORTIFY information for a binary file.
 .It Cm fortifyProc Ar pid
 Check FORTIFY information for a running process.
-.It Cm kernel
+.It Cm kernel Op Ar config
 Check kernel security flags.
+If
+.Ar config
+is provided, use that kernel config file.
 .It Cm proc Ar pid
 Check security properties for a running process.
 .It Cm procAll
@@ -88,9 +96,13 @@ If you want compact output similar to older invocations, use
 .It
 .Sy checksec --output json dir /usr/bin
 .It
+.Sy checksec dir /usr/bin --recursive
+.It
 .Sy checksec proc 1
 .It
 .Sy checksec kernel
+.It
+.Sy checksec kernel /path/to/config
 .El
 .Sh SEE ALSO
 .Xr hardening-check 1
